@@ -23,7 +23,7 @@ class NumbersForTest(object):
         self.driver.get("https://client.premiumy.net/login")
         # self.driver.implicitly_wait(30)
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[1]/div/input').send_keys('mszughbor@gmail.com')  # ('test')
-        self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[2]/div/input').send_keys('N@k54huuz*T&') # ('premiumy_test')
+        self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[2]/div/input').send_keys('N@*T&') # ('premiumy_test')
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[4]/div[1]/button').click()
 
     def get_testNumbers(self):
