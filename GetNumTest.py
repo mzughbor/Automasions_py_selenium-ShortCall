@@ -5,15 +5,13 @@ from selenium.webdriver import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 
 
-def check_exists_by_xpath(xpath):
+def check_exists_by_xpath():
     try:
         element = driver.find_element_by_css_selector('div[style="min-height: 14px; height: 15%; transform: translate3d(0px, 446.25px, 0px); backface-visibility: hidden;"]')
-        attributeValue = element.get_attribute("transform: translate3d(0px, 446.25px, 0px);")
-        #print(attributeValue)
+        element.get_attribute("transform: translate3d(0px, 446.25px, 0px);")
     except NoSuchElementException:
         return False
     return True
-
 
 class NumbersForTest(object):
     def __init__(self):
@@ -25,7 +23,7 @@ class NumbersForTest(object):
         self.driver.get("https://client.premiumy.net/login")
         # self.driver.implicitly_wait(30)
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[1]/div/input').send_keys('mszughbor@gmail.com')  # ('test')
-        self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[2]/div/input').send_keys('N@*T&') # ('premiumy_test')
+        self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[2]/div/input').send_keys('N@k54huuz*T&') # ('premiumy_test')
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div[2]/form/div[4]/div[1]/button').click()
 
     def get_testNumbers(self):
@@ -66,10 +64,15 @@ class NumbersForTest(object):
                 index = 3
                 driver.find_element_by_class_name("rs-table-scrollbar-handle").location_once_scrolled_into_view
                 TestNumbers = self.driver.find_elements_by_class_name('rs-table-row')
+                if check_exists_by_xpath() == True:
+                    indecator += 1
+                    if indecator == 2:
+                        break
             else:
                 number = TestNumber.find_element_by_xpath('//*[@id="root"]/div/div[2]/div/div/div/div[5]/div[2]/div[1]/div['+ str(index) +']/div/div[4]').text
                 print(number)
-                continue
+
+                #continue
 
 test = NumbersForTest()
 test.login_process()
@@ -80,7 +83,6 @@ while len(checkTF) == 0 :
     if len(checkTF) != 0:
         continue
     break
-
 test.get_testNumbers()
 test.scrape()
 
